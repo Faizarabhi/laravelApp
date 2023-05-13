@@ -1,17 +1,30 @@
 
 
-    <div class="card">
-        <div class="card-header">{{ __('Login') }}</div>
+  
 
         <div class="card-body">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('connect') }}">
                 @csrf
-                <a href="{{ url('/login/google/callback') }}" class="btn btn-google">
-                <i class="fa fa-google"></i> Sign in with Google
-                </a>
-             
-                
-            </form>
-        </div>
+    
+
+
+  <div class="container">
+      <label for="email"><b>Email</b></label>
+
+      <input type="text" placeholder="Enter Email" name="email" required>
+      
+      @error('email')
+      {{$message}}
+      @enderror
+     
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <a href="{{ url('/login/google') }}" class="btn btn-google-plus"> Google</a>
+    <button type="submit">Login</button>
+  
+  </div>
+
+ 
+</form>
     </div>
 
