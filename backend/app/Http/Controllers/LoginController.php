@@ -16,6 +16,7 @@ class LoginController extends Controller
      */
     public function index(Request $request)
     {
+        // dd('rr');
         // Validate the form data
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -24,8 +25,8 @@ class LoginController extends Controller
         // dd(Auth::attempt($credentials));
         if (Auth::attempt($credentials)) {
             // return redirect()->intended('/');
-
-            return redirect('/');
+            // dd('rr');
+            return redirect('/api');
         } else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',

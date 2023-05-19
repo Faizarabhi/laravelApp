@@ -20,6 +20,8 @@
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
     <a href="{{ url('/login/google') }}" class="btn btn-google-plus"> Google</a>
+    <a href="{{ url('/login/facebook') }}" class="btn btn-google-plus"> Facebook</a>
+    <a href="{{ url('/login/github') }}" class="btn btn-google-plus"> Github</a>
     <button type="submit">Login</button>
   
   </div>
