@@ -23,22 +23,48 @@ Route::get('/', function () {
     $news = [];
     $index = 0;
     $crawler = $client->request('GET', 'https://www.marocannonces.com/categorie/309/Emploi/Offres-emploi.html');
+    // dd($crawler);
+    // dd('Zahrae');
+    // $crawler->filter('#main #twocolumns ')->each(function ($node) use (&$news, &$index) {
+        $crawler->filter('#main #twocolumns a ')->each(function ($node) use (&$news, &$index) {
+        // print $node->text() . "\n";
+        // dd($node->text());
+        $node->filter(' img')->each(function ($node) use (&$news, &$index) {
 
-    $crawler->filter('.listing_set a')->each(function ($node) use (&$news, &$index) {
+            if (empty($node->attr('data-original'))){
 
-        $data = new Client();
+                return;
+            }
 
-        $article = $data->request('GET', 'https://www.marocannonces.com/' . $node->attr('href'));
-        $article->filter('h1')->each(function ($node) {
-            dd($node->text());
+            $news[$index]['img'] = 'https://www.marocannonces.com/' . $node->attr('data-original');
+            // dd($news);
+        });
+        $node->filter('a h3')->each(function ($node) use (&$news, &$index) {
+            $news[$index]['title'] = $node->text();
+            
+            // dd($news);
 
         });
+        $node->filter('a  .niveauetude')->each(function ($node) use (&$news, &$index) {
+            $news[$index]['niveauetude'] = $node->text();
+            // dd($news);
 
+        });
+        $node->filter(' a  .salary')->each(function ($node) use (&$news, &$index) {
+            $news[$index]['salaire'] = $node->text();
+            // dd($news);
+
+        });
+        $node->filter(' a  .location')->each(function ($node) use (&$news, &$index) {
+            $news[$index]['location'] = $node->text();
+            // dd($news);
+
+        });
         $index++;
 
     });
-
-    dd($news,$index);
+    
+    // dd($news,$index);
     return view('welcome', compact('news'));
 });
 
