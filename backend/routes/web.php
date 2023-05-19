@@ -20,34 +20,26 @@ use Goutte\Client;
 
 Route::get('/', function () {
     $client = new Client();
-    $crawler = $client->request('GET', 'https://www.filgoal.com/articles');
-    // dd($crawler);
-    $news = [
-    ];
+    $news = [];
     $index = 0;
-    dd($crawler);
-    $crawler->filter('#list-box ul li')->each(function ($node) use (&$news, &$index) {
-        // print $node->text() . "\n";
-        $node->filter('a img')->each(function ($node) use (&$news, &$index) {
-            // dd($node->attr('data-src'));
-            // $img = $node->attr('src');
-            if(empty($node->attr('data-src')))return;
-            
-            $news[$index]['img'] = 'http:' . $node->attr('data-src');
-            // dd($news);
-        });
-        $node->filter('a div h6')->each(function ($node) use (&$news, &$index) {
-            $news[$index]['title'] = $node->text();
-            // dd($news);
+    $crawler = $client->request('GET', 'https://www.marocannonces.com/categorie/309/Emploi/Offres-emploi.html');
+
+    $crawler->filter('.listing_set a')->each(function ($node) use (&$news, &$index) {
+
+        $data = new Client();
+
+        $article = $data->request('GET', 'https://www.marocannonces.com/' . $node->attr('href'));
+        $article->filter('h1')->each(function ($node) {
+            dd($node->text());
 
         });
-        $node->filter('a div p')->each(function ($node) use (&$news, &$index) {
-            $news[$index]['body'] = $node->text();
-        });
+
         $index++;
+
     });
-    // dd($news[1]['img']);
-    return view('welcome',compact('news'));
+
+    dd($news,$index);
+    return view('welcome', compact('news'));
 });
 
 Route::get('/login/google', [SocialAuthController::class, 'redirectToGoogle'])->name('login.google');
