@@ -40,7 +40,7 @@ class SocialAuthController extends Controller
         }
 
         
-        return redirect('/api');
+        return redirect('/');
     }
 
     public function redirectToFacebook()

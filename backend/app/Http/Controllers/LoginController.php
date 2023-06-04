@@ -9,32 +9,50 @@ use App\Http\Requests\StoreloginRequest;
 use App\Http\Requests\UpdateloginRequest;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    // public function index(Request $request)
+    // {
+    //     // dd('rr');
+    //     // Validate the form data
+    //     $credentials = $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+    //     // dd(Auth::attempt($credentials));
+    //     if (Auth::attempt($credentials)) {
+    //         // return redirect()->intended('/');
+    //         // dd('rr');
+    //         return redirect('/');
+    //     } else {
+    //         return back()->withErrors([
+    //             'email' => 'The provided credentials do not match our records.',
+    //         ]);
+    //     }
+
+    // }
     public function index(Request $request)
     {
-        // dd('rr');
         // Validate the form data
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        // dd(Auth::attempt($credentials));
+
         if (Auth::attempt($credentials)) {
-            // return redirect()->intended('/');
-            // dd('rr');
-            return redirect('/api');
+            // Authentication successful
+            return redirect('/');
         } else {
+            // Authentication failed
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ]);
         }
-
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -78,8 +96,11 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $login)
+    public function destroy(Request $request)
     {
-        //
+        Auth::logout();
+        
+        return redirect('/');
     }
+
 }

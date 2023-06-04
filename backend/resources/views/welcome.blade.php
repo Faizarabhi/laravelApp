@@ -1,216 +1,349 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout.master')
+@section('content')
+ 
+<div class="fullwidthbanner-container">
+	<div class="fullwidthbanner">
+		<ul>
 
-    <title>Laravel</title>
+			<!-- Slide 1 -->
+			<li data-fstransition="fade" data-transition="fade" data-slotamount="10" data-masterspeed="300">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+				<img src="{{ asset('images/banner-01.jpg') }}"  alt="">
+				<div class="caption title sfb" data-x="0" data-y="165" data-speed="400" data-start="800"  data-easing="easeOutExpo">
+					<h2>Explore and be discovered</h2>
+				</div>
 
-    <!-- Styles -->
-    <style>
-        article {
-            --img-scale: 1.001;
-            --title-color: black;
-            --link-icon-translate: -20px;
-            --link-icon-opacity: 0;
-            position: relative;
-            width: 29em;
-            border-radius: 16px;
-            box-shadow: none;
-            background: #fff;
-            transform-origin: center;
-            transition: all 0.4s ease-in-out;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px 0px, rgba(0, 0, 0, 0.02) 0px 0px 0px .5px;
-        }
+				<div class="caption text sfb" data-x="0" data-y="240" data-speed="400" data-start="1200" data-easing="easeOutExpo">
+					<p>Connect directly with and be discovered by the employers <br>who want to hire you.</p>
+				</div>
 
-        article a::after {
-            position: absolute;
-            inset-block: 0;
-            inset-inline: 0;
-            cursor: pointer;
-            content: "";
+				<div class="caption sfb" data-x="0" data-y="370" data-speed="400" data-start="1600" data-easing="easeOutExpo">
+					<a href="my-account.html" class="slider-button">Get Started</a>
+				</div>
+			</li>
 
-        }
+			<!-- Slide 2 -->
+			<li data-transition="slideup" data-slotamount="10" data-masterspeed="800">
+				<img src="{{ asset('images/banner-02.jpg') }}" alt="">
 
-        /* basic article elements styling */
-        article h2 {
-            margin: 0 0 18px 0;
-            /* font-family: "Bebas Neue", cursive; */
-            font-size: 1.9rem;
-            letter-spacing: 0.06em;
-            color: var(--title-color);
-            transition: color 0.3s ease-out;
-        }
+				<div class="caption title sfb" data-x="center" data-y="165" data-speed="400" data-start="800"  data-easing="easeOutExpo">
+					<h2>Hire great hourly employees</h2>
+				</div>
 
-        figure {
-            margin: 0;
-            padding: 0;
-            /* aspect-ratio: 16 / 9; */
-            overflow: hidden;
-        }
+				<div class="caption text align-center sfb" data-x="center" data-y="240" data-speed="400" data-start="1200" data-easing="easeOutExpo">
+					<p>Work Scout is most trusted job board, connecting the world's <br> brightest minds with resume database loaded with talents.</p>
+				</div>
 
-        article img {
-            min-width: 100%;
-            transform-origin: center;
-            transform: scale(var(--img-scale));
-            transition: transform 0.4s ease-in-out;
-            object-fit: cover;
-        }
+				<div class="caption sfb" data-x="center" data-y="370" data-speed="400" data-start="1600" data-easing="easeOutExpo">
+					<a href="add-job.html" class="slider-button">Hire</a>
+					<a href="browse-jobs.html" class="slider-button">Work</a>
+				</div>
+			</li>
 
-        .article-body {
-            padding: 24px;
-        }
+		</ul>
+	</div>
 
-        article a {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: #28666e;
-        }
+</div>
+<div class="container">
+	
+	<!-- Recent Jobs -->
+	<div class="eleven columns">
+	<div class="padding-right">
+		<h3 class="margin-bottom-25">Recent Jobs</h3>
+		<ul class="job-list">
 
-        article a:focus {
-            outline: 1px dotted #28666e;
-        }
+			<li class="highlighted"><a href="job-page.html">
+				<img src="images/job-list-logo-01.png" alt="">
+				<div class="job-list-content">
+					<h4>Marketing Coordinator - SEO / SEM Experience <span class="full-time">Full-Time</span></h4>
+					<div class="job-icons">
+						<span><i class="fa fa-briefcase"></i> King</span>
+						<span><i class="fa fa-map-marker"></i> Sydney</span>
+						<span><i class="fa fa-money"></i> $100 / hour</span>
+					</div>
+				</div>
+				</a>
+				<div class="clearfix"></div>
+			</li>
 
-        article a .icon {
-            min-width: 24px;
-            width: 24px;
-            height: 24px;
-            margin-left: 5px;
-            transform: translateX(var(--link-icon-translate));
-            opacity: var(--link-icon-opacity);
-            transition: all 0.3s;
-        }
+			<li><a href="job-page.html">
+				<img src="images/job-list-logo-02.png" alt="">
+				<div class="job-list-content">
+					<h4>Core PHP Developer for Site Maintenance <span class="part-time">Part-Time</span></h4>
+					<div class="job-icons">
+						<span><i class="fa fa-briefcase"></i> Cubico</span>
+						<span><i class="fa fa-map-marker"></i> London</span>
+						<span><i class="fa fa-money"></i> $50 / hour</span>
+					</div>
+				</div>
+				</a>
+				<div class="clearfix"></div>
+			</li>
 
-        /* using the has() relational pseudo selector to update our custom properties */
-        article:has(:hover, :focus) {
-            --img-scale: 1.1;
-            --title-color: #28666e;
-            --link-icon-translate: 0;
-            --link-icon-opacity: 1;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-        }
+			<li><a href="job-page.html">
+				<img src="images/job-list-logo-03.png" alt="">
+				<div class="job-list-content">
+					<h4>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h4>
+					<div class="job-icons">
+						<span><i class="fa fa-briefcase"></i> King</span>
+						<span><i class="fa fa-map-marker"></i> Sydney</span>
+						<span><i class="fa fa-money"></i> $15 / hour</span>
+					</div>
+				</div>
+				</a>
+				<div class="clearfix"></div>
+			</li>
+
+			<li><a href="job-page.html">
+				<img src="images/job-list-logo-04.png" alt="">
+				<div class="job-list-content">
+					<h4>Power Systems User Experience Designer  <span class="internship">Internship</span></h4>
+					<div class="job-icons">
+						<span><i class="fa fa-briefcase"></i> Hexagon</span>
+						<span><i class="fa fa-map-marker"></i> London</span>
+						<span><i class="fa fa-money"></i> $75 / hour</span>
+					</div>
+				</div>
+				</a>
+				<div class="clearfix"></div>
+			</li>
+
+			<li><a href="job-page.html">
+				<img src="images/job-list-logo-05.png" alt="">
+				<div class="job-list-content">
+					<h4>iPhone / Android Music App Development <span class="temporary">Temporary</span></h4>
+					<div class="job-icons">
+						<span><i class="fa fa-briefcase"></i> Mates</span>
+						<span><i class="fa fa-map-marker"></i> New York</span>
+						<span><i class="fa fa-money"></i> $115 / hour</span>
+					</div>
+				</div>
+				</a>
+				<div class="clearfix"></div>
+			</li>
+		</ul>
+
+		<a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+		<div class="margin-bottom-55"></div>
+	</div>
+	</div>
+
+	<!-- Job Spotlight -->
+	<div class="five columns">
+		<h3 class="margin-bottom-5">Job Spotlight</h3>
+
+		<!-- Navigation -->
+		<div class="showbiz-navigation">
+			<div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+			<div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+		</div>
+		<div class="clearfix"></div>
+		
+		<!-- Showbiz Container -->
+		<div id="job-spotlight" class="showbiz-container">
+			<div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+				<div class="overflowholder">
+
+					<ul>
+
+						<li>
+							<div class="job-spotlight">
+								<a href="#"><h4>Social Media: Advertising Coordinator <span class="part-time">Part-Time</span></h4></a>
+								<span><i class="fa fa-briefcase"></i> Mates</span>
+								<span><i class="fa fa-map-marker"></i> New York</span>
+								<span><i class="fa fa-money"></i> $20 / hour</span>
+								<p>As advertising & content coordinator, you will support our social media team in producing high quality social content for a range of media channels.</p>
+								<a href="job-page.html" class="button">Apply For This Job</a>
+							</div>
+						</li>
+
+						<li>
+							<div class="job-spotlight">
+								<a href="#"><h4>Prestashop / WooCommerce Product Listing <span class="freelance">Freelance</span></h4></a>
+								<span><i class="fa fa-briefcase"></i> King</span>
+								<span><i class="fa fa-map-marker"></i> London</span>
+								<span><i class="fa fa-money"></i> $25 / hour</span>
+								<p>Etiam suscipit tellus ante, sit amet hendrerit magna varius in. Pellentesque lorem quis enim venenatis pellentesque.</p>
+								<a href="job-page.html" class="button">Apply For This Job</a>
+							</div>
+						</li>
+
+						<li>
+							<div class="job-spotlight">
+								<a href="#"><h4>Logo Design <span class="freelance">Freelance</span></h4></a>
+								<span><i class="fa fa-briefcase"></i> Hexagon</span>
+								<span><i class="fa fa-map-marker"></i> Sydney</span>
+								<span><i class="fa fa-money"></i> $10 / hour</span>
+								<p>Proin ligula neque, pretium et ipsum eget, mattis commodo dolor. Etiam tincidunt libero quis commodo.</p>
+								<a href="job-page.html" class="button">Apply For This Job</a>
+							</div>
+						</li>
 
 
-            /************************
-             Generic layout (demo looks)
-             **************************/
+					</ul>
+					<div class="clearfix"></div>
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
 
-        body {
-            margin: 0;
-            padding: 48px 0;
-            font-family: "Figtree", sans-serif;
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-            /* background-image: linear-gradient(45deg, #7c9885, #b5b682); */
-            min-height: 100vh;
-        }
+	</div>
+</div>
 
-        .img {
-            object-fit: 'cover';
-        }
 
-        .articles {
-            display: grid;
-            width: 29em;
-            margin-inline: auto;
-            padding-inline: 24px;
-            /* grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); */
-            gap: 24px;
-        }
+<!-- Counters -->
+<div id="counters">
+	<div class="container">
 
-        @media screen and (max-width: 960px) {
-            article {
-                /* container: card/inline-size; */
-            }
+		<div class="four columns">
+			<div class="counter-box">
+				<span class="counter">15</span><i>k</i>
+				<p>Job Offers</p>
+			</div>
+		</div>
 
-            .article-body p {
-                display: none;
-            }
-        }
+		<div class="four columns">
+			<div class="counter-box">
+				<span class="counter">4982</span>
+				<p>Members</p>
+			</div>
+		</div>
 
-        @container card (min-width: 380px) {
-            .article-wrapper {
-                display: grid;
-                grid-template-columns: 100px 1fr;
-                gap: 16px;
-            }
+		<div class="four columns">
+			<div class="counter-box">
+				<span class="counter">768</span>
+				<p>Resumes Posted</p>
+			</div>
+		</div>
 
-            /* .article-body {
-                padding-left: 0;
-            } */
+		<div class="four columns">
+			<div class="counter-box">
+				<span class="counter">90</span><i>%</i>
+				<p>Clients Who Rehire</p>
+			</div>
+		</div>
 
-            figure {
-                width: 100%;
-                height: 100%;
-                */ overflow: hidden;
-            }
+	</div>
+</div>
 
-            figure img {
-                height: 100%;
-                width: 100%;
-                aspect-ratio: 1;
-                object-fit: cover;
-            }
-        }
 
-        /* .sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-} */
-    </style>
-</head>
+<!-- Infobox -->
+<div class="infobox">
+	<div class="container">
+		<div class="sixteen columns">Start Building Your Own Job Board Now <a href="my-account.html">Get Started</a></div>
+	</div>
+</div>
 
-<body class="antialiased">
-    @foreach ($news as $new)
-        <section class="articles">
-            <article>
-                <div class="article-wrapper">
-                    <figure>
-                        @if (!empty($new['img']))
-                            <img src='{{ $new['img'] }}' alt="" class='img' />
-                        @endif
-                    </figure>
-                    <div class="article-body">
-                        <h2>{{ $new['title'] }}</h2>
-                        <p>
-                            {{ $new['niveauetude'] }}
-                        </p>
-                        <p>Localisation{{ $new['location'] }}</p>
-                        <p>Salaire{{ $new['salaire'] }}</p>
 
-                        <a href="#" class="read-more">
-                            <span class="sr-only"></span>
-                            Read more
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </article>
-    @endforeach
+<!-- Recent Posts -->
+<div class="container">
+	<div class="sixteen columns">
+		<h3 class="margin-bottom-25">Job Plans & Pricing</h3>
+	</div>
 
-</body>
 
-</html>
+	<!-- Plan #1 -->
+	<div class="plan color-1 one-third column">
+		<div class="plan-price">
+			<h3>Start Up</h3>
+			<span class="plan-currency">$</span>
+			<span class="value">19</span>
+			
+		</div>
+		<div class="plan-features">
+			<ul>
+				<li>One Time Fee</li>
+				<li>This Plan Includes 1 Job</li>
+				<li>Non-Highlighted Post</li>
+				<li>Posted For 30 Days</li>
+			</ul>
+			<a class="button" href="#"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+		</div>
+	</div>
+
+	<!-- Plan #2 -->	
+	<div class="plan color-2 one-third column">
+		<div class="plan-price">
+			<h3>Company</h3>
+			<span class="plan-currency">$</span>
+			<span class="value">59</span>
+		</div>
+		<div class="plan-features">
+			<ul>
+				<li>One Time Fee</li>
+				<li>This Plan Includes 2 Jobs</li>
+				<li>Highlighted Job Post</li>
+				<li>Posted For 60 Days</li>
+			</ul>
+			<a class="button" href="#"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+		</div>
+	</div>
+			
+	<!-- Plan #3 -->
+	<div class="plan color-1 one-third column">
+		<div class="plan-price">
+			<h3>Enterprise</h3>
+			<span class="plan-currency">$</span>
+			<span class="value">99</span>
+		</div>
+		<div class="plan-features">
+			<ul>
+				<li>One Time Fee</li>
+				<li>This Plan Includes 4 Jobs</li>
+				<li>2 Highlighted Job Posts</li>
+				<li>Posted For 90 Days</li>
+			</ul>
+			<a class="button" href="#"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- Clients Carousel -->
+<h3 class="centered-headline">Clients Who Have Trusted Us <span>The list of clients who have put their trust in us includes:</span></h3>
+<div class="clearfix"></div>
+
+<div class="container">
+
+	<div class="sixteen columns">
+
+		<!-- Navigation / Left -->
+		<div class="one carousel column"><div id="showbiz_left_2" class="sb-navigation-left-2"><i class="fa fa-angle-left"></i></div></div>
+
+		<!-- ShowBiz Carousel -->
+		<div id="our-clients" class="showbiz-container fourteen carousel columns" >
+
+		<!-- Portfolio Entries -->
+		<div class="showbiz our-clients" data-left="#showbiz_left_2" data-right="#showbiz_right_2">
+			<div class="overflowholder">
+
+				<ul>
+					<!-- Item -->
+					<li><img src="images/logo-01.png" alt="" /></li>
+					<li><img src="images/logo-02.png" alt="" /></li>
+					<li><img src="images/logo-03.png" alt="" /></li>
+					<li><img src="images/logo-04.png" alt="" /></li>
+					<li><img src="images/logo-05.png" alt="" /></li>
+					<li><img src="images/logo-06.png" alt="" /></li>
+					<li><img src="images/logo-07.png" alt="" /></li>
+				</ul>
+				<div class="clearfix"></div>
+
+			</div>
+			<div class="clearfix"></div>
+
+		</div>
+		</div>
+
+		<!-- Navigation / Right -->
+		<div class="one carousel column"><div id="showbiz_right_2" class="sb-navigation-right-2"><i class="fa fa-angle-right"></i></div></div>
+
+	</div>
+
+</div>
+<!-- Container / End -->
+@endsection
