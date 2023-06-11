@@ -16,12 +16,13 @@ class SocialAuthController extends Controller
     public function redirectToGoogle()
     {
         // dd(Socialite::driver('google'));
+
         return Socialite::driver('google')->redirect();
 
     }
+
     public function handleGoogleCallback()
     {
-        // dd(Socialite::driver('google')->stateless()->user());
         $socialiteUser = Socialite::driver('google')->stateless()->user();
 
         $email = $socialiteUser->getEmail();
@@ -29,20 +30,20 @@ class SocialAuthController extends Controller
         $google_id = $socialiteUser->getId();
         $user = SocialAuth::where('email', $email)->first();
 
-        // dd($user);
         if (!$user) {
-            $new_user = SocialAuth::create([
+            // User doesn't exist, create a new user
+            $user = SocialAuth::create([
                 'name' => $name,
                 'email' => $email,
                 'google_id' => $google_id,
             ]);
-
         }
 
-        
+        // Log in the user
+        Auth::login($user);
+
         return redirect('/');
     }
-
     public function redirectToFacebook()
     {
         // dd(Socialite::driver('facebook'));

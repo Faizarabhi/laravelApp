@@ -17,7 +17,7 @@
         </div>
     </div>
     <!-- Container -->
-    <div class="container">
+    <div class="container log">
 
         <div class="my-account">
 
@@ -26,39 +26,41 @@
                 <li><a href="#tab2">Register</a></li>
             </ul>
 
-            <div class="tabs-container">
+            <div class="tabs-container ">
                 <!-- Login -->
                 <div class="tab-content" id="tab1" style="display: none;">
 
                     <h3 class="margin-bottom-10 margin-top-10">Login</h3>
 
                     <form method="POST" action="{{ route('login') }}">
-                      @csrf
-                  
-                      <p class="form-row form-row-wide">
-                          <label for="email">Username or Email Address:</label>
-                          <input type="text" class="input-text" name="email" id="email" value="{{ old('email') }}" />
-                      </p>
-                  
-                      <p class="form-row form-row-wide">
-                          <label for="password">Password:</label>
-                          <input class="input-text" type="password" name="password" id="password" />
-                      </p>
-                  
-                      <p class="form-row">
-                          <input type="submit" class="button" name="login" value="Login" />
-                  
-                          <label for="remember" class="rememberme">
-                              <input name="remember" type="checkbox" id="remember" value="1" {{ old('remember') ? 'checked' : '' }} /> Remember
-                              Me
-                          </label>
-                      </p>
-                  
-                      <p class="lost_password">
-                          <a href="#">Lost Your Password?</a>
-                      </p>
-                  </form>
-                  
+                        @csrf
+
+                        <p class="form-row form-row-wide">
+                            <label for="email">Username or Email Address:</label>
+                            <input type="text" class="input-text" name="email" id="email"
+                                value="{{ old('email') }}" />
+                        </p>
+
+                        <p class="form-row form-row-wide">
+                            <label for="password">Password:</label>
+                            <input class="input-text" type="password" name="password" id="password" />
+                        </p>
+
+                        <p class="form-row">
+                            <input type="submit" class="button" name="login" value="Login" />
+
+                            <label for="remember" class="rememberme">
+                                <input name="remember" type="checkbox" id="remember" value="1"
+                                    {{ old('remember') ? 'checked' : '' }} /> Remember
+                                Me
+                            </label>
+                        </p>
+
+                        <p class="lost_password">
+                            <a href="#">Lost Your Password?</a>
+                        </p>
+                    </form>
+
                 </div>
 
                 <!-- Register -->
@@ -93,6 +95,14 @@
                     </form>
                 </div>
             </div>
-        </div>
+          </div>
+          <div>
+              <ul class="social-icons connect">
+                  <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                  <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a class="gplus" href="/login/google"><i class="icon-gplus"></i></a></li>
+                  <li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+              </ul>
+          </div>
     </div>
 @endsection
